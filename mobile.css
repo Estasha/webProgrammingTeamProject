@@ -1,0 +1,100 @@
+/*모바일 환경에서 적용될 스타일*/
+@media screen and (max-width: 768px) {
+    body > header > ul {
+        display: none;
+    }
+
+    body > header > button {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    main {
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    main > div {
+        margin-bottom: 20px;
+    }
+
+    main > div > span {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    /* 슬라이드 메뉴 스타일 */
+    #slideMenu {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background-color: #867878;
+        color: white;
+        transition: right 0.3s ease-in-out;
+        z-index: 1000;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #slideMenu.active {
+        right: 0;
+    }
+
+    .menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .menu-header h3 {
+        margin: 0;
+        font-size: 20px;
+    }
+
+    #closeMenu {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #slideMenu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: block;
+        position: static;
+    }
+
+    #slideMenu li {
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    #slideMenu a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        margin: 0;
+        padding: 5px 0;
+    }
+
+    #slideMenu a:hover {
+        color: #f0f0f0;
+    }
+}
