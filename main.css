@@ -1,0 +1,49 @@
+/*단위 px로 통일*/
+
+/* 전체 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: #867878;
+    color: white;
+    padding: 20px;
+    position: relative;
+}
+
+/* 메인 스타일 */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 10px;
+}
+
+/* 푸터 스타일 */
+footer {
+    background-color: #867878;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* ul 스타일 */
+ul {
+    list-style: none;
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 50%;
+}
+
+/* a태그 스타일 */
+a {
+    text-decoration: none;
+    color: white;
+    margin-left: 20px;
+}
+
