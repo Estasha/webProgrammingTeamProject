@@ -1,5 +1,5 @@
 /*모바일 환경에서 적용될 스타일*/
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     body > header > ul {
         display: none;
     }
