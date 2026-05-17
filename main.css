@@ -71,6 +71,7 @@ main {
 /* text-decoration: none — 링크 밑줄 제거 */
 .item {
     height: 200px;
+    margin: 20px;
     background-color: #172952;
     display: block;
     text-decoration: none;
