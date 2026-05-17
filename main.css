@@ -7,14 +7,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
-
+body {
+    background-color: #f6f2ed;
+}
 
 /* ── 헤더 ───────────────────────────────────────────────────── */
 /* position: relative — 자식인 ul(absolute)의 기준점이 됨 */
 header {
-    background-color: #867878;
+    background-color: #9d8ee0;
     color: white;
     padding: 20px;
     position: relative;
@@ -42,6 +45,7 @@ header button {
     width: 100%;
     height: auto;
     display: block;  /* 이미지 하단 기본 여백(인라인 요소 특성) 제거 */
+    border-radius: 18px;
 }
 
 
@@ -51,18 +55,25 @@ main {
     max-width: 1000px;
     margin: 20px auto;
     padding: 10px;
-    background-color: #34a86e;
 }
 
+#title-box {
+    
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
 
 /* ── 그리드 컨테이너 ─────────────────────────────────────────── */
 /* 아이템을 3열로 배치 — 각 열은 남은 공간을 균등 분할(1fr) */
 /* mobile.css의 ≤768px 미디어쿼리에서 1열로 전환됨 */
-#main-box {
+#test-box {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;      /* 아이템 간 여백 */
     padding: 10px;
+    background-color: #0c6e75;
+
+    border-radius: 18px;
 }
 
 
@@ -72,21 +83,44 @@ main {
 .item {
     height: 200px;
     margin: 20px;
-    background-color: #172952;
+    background-color: #ffffff;
     display: block;
     text-decoration: none;
     cursor: pointer;
+    
+    border-radius: 18px;
 }
 
+.tagBox {
+    background-color: #000000fb;
+    color: white;
+    padding: 4px 15px;
+    border-radius: 20px;
+    margin: 10px;
+
+    width: fit-content;
+    font-size: 14px;
+}
+
+.info-tag {
+    margin: 10px;
+}
+
+.info-desc {
+    margin: 10px;
+    font-size: 14px;
+    color: rgb(114, 74, 48);
+}
 
 
 /* ── 푸터 ───────────────────────────────────────────────────── */
 footer {
-    background-color: #867878;
+    background-color: #9d8ee0;
     color: white;
     text-align: center;
     padding: 10px;
     margin-top: 20px;
+
 }
 
 
@@ -108,6 +142,7 @@ a {
     text-decoration: none;
     color: white;
     margin-left: 20px;
+    color: black;
 }
 
 

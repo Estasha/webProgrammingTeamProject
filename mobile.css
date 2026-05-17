@@ -9,7 +9,7 @@
     /* 햄버거 버튼(☰) 표시 — main.css에서 display: none이었던 것을 되살림 */
     /* position: absolute + top/transform 조합으로 헤더 세로 중앙 정렬 */
     body > header > button {
-        display: block;
+        display: none;
         position: absolute;
         right: 20px;
         top: 50%;
@@ -22,7 +22,7 @@
     /* transition으로 right 값이 바뀔 때 0.3초 슬라이드 애니메이션 적용 */
     /* z-index: 1000 — 다른 모든 콘텐츠 위에 표시 */
     #slideMenu {
-        display: block;
+        display: none;
         position: fixed;
         top: 0;
         right: -300px;
@@ -123,7 +123,7 @@
 /* ── 모바일 세로 모드 전용 그리드 변환 (≤768px) ───────────────── */
 /* 데스크탑의 3열 그리드를 1열로 줄여 아이템이 세로로 쌓이게 함 */
 @media screen and (max-width: 768px) {
-    #main-box {
+    #test-box {
         grid-template-columns: 1fr;
     }
 }
