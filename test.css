@@ -9,6 +9,13 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #f6f2ed;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 /* ── 헤더 ───────────────────────────────────────────────────── */
 /* position: relative — 햄버거 버튼(absolute)의 기준점 */
 header {
@@ -130,6 +137,7 @@ a {
 /* max-width: 480px — 모바일 세로 화면 너비로 콘텐츠 폭 제한 */
 /* margin auto — 데스크탑에서도 화면 중앙에 정렬 */
 main {
+    flex: 1;
     max-width: 480px;
     margin: 20px auto;
     padding: 15px;

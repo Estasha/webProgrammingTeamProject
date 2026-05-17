@@ -10,9 +10,16 @@
     
 }
 
+/* min-height: 100vh — 콘텐츠가 짧아도 body가 화면 전체 높이를 차지 */
+/* flex-direction: column — header·main·footer를 세로로 쌓음 */
+/* footer가 항상 화면 하단에 붙도록 main이 남은 공간을 채우는 구조 */
 body {
     background-color: #f6f2ed;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
+
 
 /* ── 헤더 ───────────────────────────────────────────────────── */
 /* position: relative — 자식인 ul(absolute)의 기준점이 됨 */
@@ -51,10 +58,13 @@ header button {
 
 /* ── 메인 영역 ──────────────────────────────────────────────── */
 /* max-width + margin auto 조합으로 콘텐츠를 화면 중앙에 고정 */
+/* flex: 1 은 위 body 선언과 함께 작동 — footer를 항상 하단으로 밀어냄 */
 main {
+    flex: 1;
     max-width: 1000px;
     margin: 20px auto;
     padding: 10px;
+    width: 100%;
 }
 
 #title-box {
