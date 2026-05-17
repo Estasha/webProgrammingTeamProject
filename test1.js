@@ -4,9 +4,10 @@
 // null에 onclick을 할당하려 하면 TypeError가 발생해 페이지가 멈춘다.
 // DOMContentLoaded 이벤트는 HTML 파싱이 끝난 시점에 발생하므로
 // 이 안에서 DOM 요소를 참조하면 항상 정상적으로 가져온다.
+// (수업시간에 배운 window.onload와 비슷한 개념입니다.)
 document.addEventListener('DOMContentLoaded', function() {
 
-    // ─── 1. DOM 요소 참조 ─────────────────────────────────────────────────
+    // ─── 1. DOM 요소 참조(문서 객체 선택!) ─────────────────────────────────────────────────
     let stepText     = document.getElementById('stepText');       // 'Q1 / 12' 텍스트
     let percentText  = document.getElementById('percentText');    // '0%' 텍스트
     let progressFill = document.getElementById('progressFill');   // 진행 바 채우기 div
@@ -104,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //   TF: Q7(5), Q8(6), Q9(7)
     //   JP: Q10(8), Q11(9), Q12(10)
     function recordScore(isOption1) {
-        if (!isOption1) return; // option2 선택 시 점수 변화 없음
+        if (!isOption1) return; // option2 선택 시 점수 변화 없음 << 버튼1 클릭 시 isOption1이 true가 되어 if문을 통과합니다.(!true)이므로 false가 되기 때문에 첫 if문을 실행 안합니다!
 
         if (currentIndex <= 1) {        // Q1(-1), Q2(0), Q3(1) → EI 차원
             eiSum++;
@@ -121,14 +122,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // nextIndex에 해당하는 질문·선택지·진행 상태를 화면에 표시한다.
     // button1/button2 안의 <span>만 교체해 버튼의 CSS 구조를 유지한다.
     // progressFill.style.width에는 '8.3%'처럼 숫자+단위만 넣어야 한다.
-    // (이전 코드의 'width: 8.3%'는 CSS 속성명까지 포함한 잘못된 값이었다.)
-    function showNextQuestion(nextIndex) {
-        stepText.textContent  = steps[nextIndex];
-        percentText.textContent = percent[nextIndex];
-        progressFill.style.width = percent[nextIndex];
-        questionTitle.textContent = questions[nextIndex];
-        button1.querySelector('span').textContent = option1[nextIndex];
-        button2.querySelector('span').textContent = option2[nextIndex];
+    function showNextQuestion(nextIndex) { // !!nextIndex와 currentIndex는 같은 값입니다!!
+        stepText.textContent  = steps[nextIndex]; // 선택지를 고르면 Qn으로 바꿔줍니다.
+        percentText.textContent = percent[nextIndex]; // 선택지를 고르면 그 다음 질문의 퍼센트로 바꿔줍니다.
+        progressFill.style.width = percent[nextIndex]; // 선택지를 고르면 그 다음 질문의 퍼센트로 바꿔줍니다.
+        questionTitle.textContent = questions[nextIndex]; // 선택지를 고르면 그 다음 질문의 질문으로 바꿔줍니다.
+        button1.querySelector('span').textContent = option1[nextIndex]; // 선택지를 고르면 그 다음 질문의 선택지1으로 바꿔줍니다.
+        button2.querySelector('span').textContent = option2[nextIndex]; // 선택지를 고르면 그 다음 질문의 선택지2으로 바꿔줍니다.
     }
 
     // ─── 8. 결과 표시 함수 ────────────────────────────────────────────────
@@ -138,11 +138,11 @@ document.addEventListener('DOMContentLoaded', function() {
         percentText.textContent = '100%';
         progressFill.style.width = '100%';
 
-        let EI = eiSum > 1.5 ? 'E' : 'I';
+        let EI = eiSum > 1.5 ? 'E' : 'I'; // if 조건문과 원리가 똑같습니다! eiSum > 1.5 가 참이라면 E, 거짓이라면 I를 저장합니다.
         let SN = snSum > 1.5 ? 'S' : 'N';
         let TF = tfSum > 1.5 ? 'T' : 'F';
         let JP = jpSum > 1.5 ? 'J' : 'P';
-        let mbti = EI + SN + TF + JP;
+        let mbti = EI + SN + TF + JP; // 만약 EI = 'E', SN = 'N', TF = 'F', JP = 'P' 라면, mbti = 'ENFP'가 됩니다.
 
         // URL 파라미터로 MBTI 유형을 넘기며 결과 페이지로 이동
         window.location.href = 'result.html?type=' + mbti;
@@ -163,14 +163,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // [버그 3] for 루프가 이벤트 기반이 아님
     //   for 루프는 페이지 로드 즉시 동기적으로 11번 전부 실행된다.
     //   if (button1.onclick) 는 "버튼이 클릭됐는가?"가 아니라
-    //   "onclick에 함수가 할당돼 있는가?"를 확인한다 → 항상 true
+    //   "onclick에 함수가 할당돼 있는가?"를 확인한다 → 항상 true << 버그1,2,3 은 신경쓰지 마세요!
 
     button1.addEventListener('click', function() {
-        recordScore(true); // option1 선택 → E/S/T/J 성향 점수 +1
+        recordScore(true); // option1 선택 → E/S/T/J 성향 점수 +1 107줄의 recordScore 함수를 호출하고 매개변수에 true를 전달합니다.
         currentIndex++;    // 다음 질문으로 이동
 
         if (currentIndex < questions.length) {
-            showNextQuestion(currentIndex); // 다음 질문 표시
+            showNextQuestion(currentIndex); // 다음 질문 표시 125줄의 showNextQuestion 함수를 호출하고 매개변수에 currentIndex를 전달합니다.
         } else {
             showResult(); // 모든 질문 완료 → 결과 표시
         }
