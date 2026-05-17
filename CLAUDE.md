@@ -14,9 +14,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 파일 4개로 구성된다.
 
-- [index.html](index.html) — 단일 페이지. 데스크탑용 헤더 내비게이션과 모바일용 `#slideMenu` 요소(데스크탑에서는 숨김)를 분리해서 관리한다. `<main>`에 6개의 5점 척도 라디오 버튼 질문(`name="question"` ~ `name="question6"`)이 있으며, "결과 보기" 버튼과 결과를 표시할 빈 `<p>`가 존재하나 **결과 계산 로직은 아직 JS에 구현되지 않았다.**
+- [index.html](index.html) — 메인 페이지. 데스크탑용 헤더 내비게이션과 모바일용 `#slideMenu` 요소(데스크탑에서는 숨김)를 분리해서 관리한다. 
+
 - [main.js](main.js) — 모바일 슬라이드 메뉴만 담당. `DOMContentLoaded` 이후 `#mobileMenu` 클릭으로 열고, `#closeMenu` 클릭 또는 메뉴 외부 클릭으로 닫는다.
+
 - [main.css](main.css) — 데스크탑 스타일. `#slideMenu`와 `header button`(햄버거)은 `display: none`으로 숨긴다. `header ul`은 `position: absolute`로 오른쪽 정렬된다.
+
 - [mobile.css](mobile.css) — `@media (max-width: 768px)` 오버라이드. 데스크탑 내비를 숨기고 햄버거 버튼을 노출하며, `#slideMenu`를 화면 오른쪽 고정 드로어로 전환(`transition: right 0.3s`). JS가 `.active` 클래스를 토글하면 드로어가 슬라이드 인된다.
 
 ## 주요 컨벤션

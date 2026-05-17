@@ -1,0 +1,148 @@
+/* 단위 px 통일 */
+/* 테스트 페이지 전용 독립 스타일시트 */
+/* 데스크탑·태블릿·모바일 모든 화면에서 모바일 세로 모드 레이아웃으로 동작 */
+
+/* ── 전체 초기화 ────────────────────────────────────────────── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ── 헤더 ───────────────────────────────────────────────────── */
+/* position: relative — 햄버거 버튼(absolute)의 기준점 */
+header {
+    background-color: #867878;
+    color: white;
+    padding: 20px;
+    position: relative;
+}
+
+/* 가로 내비게이션 목록 — 화면 크기와 무관하게 항상 숨김 */
+header > ul {
+    display: none;
+}
+
+/* 햄버거 버튼 — 화면 크기와 무관하게 항상 표시 */
+/* 헤더 오른쪽 끝, 세로 중앙에 고정 */
+#mobileMenu {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+/* ── 앵커 태그 전역 초기화 ──────────────────────────────────── */
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/* ── 슬라이드 드로어 ────────────────────────────────────────── */
+/* 화면 크기와 무관하게 항상 fixed 드로어 방식으로 동작 */
+/* 평소에는 right: -300px 으로 화면 밖에 숨어 있음 */
+#slideMenu {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background-color: #867878;
+    color: white;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* JS가 .active 클래스를 추가하면 right: 0 이 되어 드로어가 슬라이드 인 */
+#slideMenu.active {
+    right: 0;
+}
+
+/* 드로어 상단 — "메뉴" 제목과 × 버튼을 양 끝에 배치 */
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.menu-header h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+/* × 닫기 버튼 */
+#closeMenu {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 드로어 안의 ul — 세로 목록으로 표시 */
+/* position: static 으로 헤더 ul의 absolute 배치 영향을 차단 */
+#slideMenu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+    position: static;
+}
+
+/* 각 메뉴 항목 */
+#slideMenu li {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 드로어 링크 — 클릭 영역을 항목 전체로 확장 */
+#slideMenu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 0;
+    padding: 5px 0;
+}
+
+#slideMenu a:hover {
+    color: #f0f0f0;
+}
+
+
+/* ── 메인 영역 ──────────────────────────────────────────────── */
+/* max-width: 480px — 모바일 세로 화면 너비로 콘텐츠 폭 제한 */
+/* margin auto — 데스크탑에서도 화면 중앙에 정렬 */
+main {
+    max-width: 480px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #34a86e;
+}
+
+
+
+/* ── 푸터 ───────────────────────────────────────────────────── */
+footer {
+    background-color: #867878;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
