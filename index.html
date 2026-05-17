@@ -4,72 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>성향 테스트</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="mobile.css">
-    <link rel="stylesheet" href="tablet.css">
-    <link rel="stylesheet" href="slideMenu.css">
-    <script src="main.js"></script>
+    <link rel="stylesheet" href="main.css">    <!-- 데스크탑 기본 레이아웃 스타일 -->
+    <link rel="stylesheet" href="mobile.css">   <!-- 1024px 이하(모바일·태블릿) 스타일 -->
+    <link rel="stylesheet" href="tablet.css">    <!-- 769px~1024px 태블릿 전용 추가 스타일 -->
 </head>
 <body>
-    <!--성향 테스트 웹사이트 메인페이지-->
+    <!-- ── 헤더: 사이트 제목 + 내비게이션 ─────────────────────────── -->
     <header>
         <h1>성향 테스트</h1>
-        <ul> <!--상단 메뉴 필요가 없어서 비활성화 했습니다.-->
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-        </ul>
-        <button id="mobileMenu">☰</button>
     </header>
 
-    <!--슬라이드 메뉴 버튼 기능 필요가 없어서 비활성화 했습니다.-->
-    <nav id="slideMenu">
-        <div class="menu-header">
-            <h3>메뉴</h3>
-            <button id="closeMenu">&times;</button>
-        </div>
-        <ul> 
-            <li><a href="#">Lorem, ipsum dolor.</a></li>
-            <li><a href="#">Lorem, ipsum dolor.</a></li>
-            <li><a href="#">Lorem, ipsum dolor.</a></li>
-            <li><a href="#">Lorem, ipsum dolor.</a></li>
-            <li><a href="#">Lorem, ipsum dolor.</a></li>
-        </ul>
-    </nav>
+    <!-- ── 메인 콘텐츠 영역 ────────────────────────────────────────── -->
     <main>
+        <!-- 메인 콘텐츠 전체를 감싸는 컨테이너 (광고 배너 + 소개 + 테스트 그리드) -->
         <div id="main-box">
-            <div id="ad-banner"> <!--광고 배너입니다.-->
+
+            <!-- 광고 배너: grid-column: 1/-1 로 3열 그리드 전체 너비를 차지 -->
+            <div id="ad-banner">
                 <img src="./img/banner.png" alt="광고 배너">
             </div>
 
-            <div id="title-box"> <!--메인 페이지 소개 문장입니다.-->
+            <!-- 소개 텍스트 영역: 사이트 제목과 안내 문구 -->
+            <div id="title-box">
                 <h1>여러가지 성향 테스트</h1><br>
                 <p>당신의 성향을 테스트해보세요.</p>
                 <p>다양한 테스트를 통해 당신만의 성향을 알아보세요.</p>
             </div>
 
-
+            <!-- 테스트 카드 그리드: 데스크탑 3열, 모바일(≤768px) 1열 -->
             <div id="test-box">
+
+                <!-- test1.html로 이동하는 테스트 카드 — <a>를 block으로 표시해 카드 전체가 클릭 영역 -->
                 <a href="test1.html" id="test1" class="item">
+                    <!-- 카테고리 배지 (pill 형태) -->
                     <div class="tagBox">심리</div>
+                    <!-- 테스트 제목 -->
                     <div class="info-tag"><h3>개발자 성향 테스트</h3></div>
+                    <!-- 테스트 소개 설명 -->
                     <div class="info-desc">당신의 개발자 성향을 테스트해보세요. 협업 능력, 프로그래밍 언어 선호도, 개발 스타일 등을 분석합니다.</div>
                 </a>
+
+                <!-- test2.html로 이동하는 테스트 카드 -->
                 <a href="test2.html" id="test2" class="item">
                     <div class="tagBox">심리</div>
                     <div class="info-tag"><h3>개발자 성향 테스트</h3></div>
                     <div class="info-desc">당신의 개발자 성향을 테스트해보세요. 프로그래밍 언어 선호도, 개발 스타일 등을 분석합니다.</div>
                 </a>
-                <a href="test3.html" id="test3" class="item">
-                    <div class="tagBox">심리</div>
-                    <div class="info-tag"><h3>개발자 성향 테스트</h3></div>
-                    <div class="info-desc">당신의 개발자 성향을 테스트해보세요. 프로그래밍 언어 선호도, 개발 스타일 등을 분석합니다.</div>
-                </a>
-            </div>
-        </div>
+
+            </div><!-- /#test-box -->
+        </div><!-- /#main-box -->
     </main>
+
+    <!-- ── 푸터: 저작권·팀원 정보 ─────────────────────────────────── -->
     <footer>
         <p>© 웹프로그래밍 팀 프로젝트 by 이승엽, 박민성, 신민철</p>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto quae quas labore ipsa quos commodi qui quisquam eius esse in. Vero ipsa vitae id hic nulla porro architecto minus labore. Totam architecto reprehenderit illum doloremque autem quod quibusdam! Nobis exercitationem cumque fuga nisi. Iste doloremque culpa ea deleniti repellat ab.</p>

@@ -31,14 +31,6 @@ header {
 }
 
 
-
-/* 햄버거 버튼은 데스크탑에서 숨김 — mobile.css에서 ≤1024px일 때 다시 표시 */
-header button {
-    display: none;
-}
-
-
-
 /* ── 광고 배너 ──────────────────────────────────────────────── */
 /* grid-column: 1 / -1 → 전체 열(1열~마지막 열)을 가로질러 배너가 전체 폭 차지 */
 #ad-banner {
@@ -67,8 +59,9 @@ main {
     width: 100%;
 }
 
+/* ── 소개 텍스트 박스 ──────────────────────────────────────────── */
+/* #main-box 안에서 소개 문구 위아래에 여백을 주어 광고 배너·테스트 그리드와 간격을 둠 */
 #title-box {
-    
     margin-top: 30px;
     margin-bottom: 30px;
 }
@@ -78,7 +71,7 @@ main {
 /* mobile.css의 ≤768px 미디어쿼리에서 1열로 전환됨 */
 #test-box {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;      /* 아이템 간 여백 */
     padding: 10px;
     background-color: #0c6e75;
@@ -101,6 +94,10 @@ main {
     border-radius: 18px;
 }
 
+/* ── 카테고리 태그 ───────────────────────────────────────────── */
+/* 각 테스트 카드 상단의 "심리" 같은 배지 */
+/* border-radius: 20px — pill 형태 */
+/* width: fit-content — 텍스트 길이에 맞게 너비 자동 조절 */
 .tagBox {
     background-color: #000000fb;
     color: white;
@@ -112,10 +109,14 @@ main {
     font-size: 14px;
 }
 
+/* ── 테스트 카드 제목 영역 ───────────────────────────────────── */
+/* tagBox 아래의 h3 제목을 감싸는 div — 좌우·상하 여백만 추가 */
 .info-tag {
     margin: 10px;
 }
 
+/* ── 테스트 카드 설명 텍스트 ─────────────────────────────────── */
+/* 카드 하단 소개 문구 — 작은 폰트, 갈색 계열 색상으로 시각적 계층 구분 */
 .info-desc {
     margin: 10px;
     font-size: 14px;
@@ -156,8 +157,3 @@ a {
 }
 
 
-/* ── 슬라이드 메뉴 (데스크탑에서 숨김) ─────────────────────── */
-/* mobile.css에서 ≤1024px일 때 display: block으로 바뀌고 fixed 드로어로 동작 */
-#slideMenu {
-    display: none;
-}

@@ -3,12 +3,17 @@
 /* 데스크탑·태블릿·모바일 모든 화면에서 모바일 세로 모드 레이아웃으로 동작 */
 
 /* ── 전체 초기화 ────────────────────────────────────────────── */
+/* 브라우저 기본 margin/padding 제거, box-sizing을 border-box로 통일해 width 계산을 단순화 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ── 레이아웃 뼈대 ──────────────────────────────────────────── */
+/* min-height: 100vh — 콘텐츠가 짧아도 body가 화면 전체 높이를 차지 */
+/* flex-direction: column — header·main·footer를 세로로 쌓음 */
+/* footer가 항상 화면 하단에 붙도록 main이 남은 공간을 채우는 구조 */
 body {
     background-color: #f6f2ed;
     display: flex;
@@ -17,7 +22,6 @@ body {
 }
 
 /* ── 헤더 ───────────────────────────────────────────────────── */
-/* position: relative — 햄버거 버튼(absolute)의 기준점 */
 header {
     background-color: #867878;
     color: white;
@@ -25,117 +29,21 @@ header {
     position: relative;
 }
 
-/* 가로 내비게이션 목록 — 화면 크기와 무관하게 항상 숨김 */
-header > ul {
-    display: none;
-}
-
-/* 햄버거 버튼 — 화면 크기와 무관하게 항상 표시 */
-/* 헤더 오른쪽 끝, 세로 중앙에 고정 */
-#mobileMenu {
-    display: none;
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-}
 
 
 /* ── 앵커 태그 전역 초기화 ──────────────────────────────────── */
+/* 페이지 내 모든 링크의 밑줄 제거, 흰색으로 초기화 */
 a {
     text-decoration: none;
     color: white;
 }
 
-/* ── 슬라이드 드로어 ────────────────────────────────────────── */
-/* 화면 크기와 무관하게 항상 fixed 드로어 방식으로 동작 */
-/* 평소에는 right: -300px 으로 화면 밖에 숨어 있음 */
-#slideMenu {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: -300px;
-    width: 300px;
-    height: 100vh;
-    background-color: #867878;
-    color: white;
-    transition: right 0.3s ease-in-out;
-    z-index: 1000;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* JS가 .active 클래스를 추가하면 right: 0 이 되어 드로어가 슬라이드 인 */
-#slideMenu.active {
-    right: 0;
-}
-
-/* 드로어 상단 — "메뉴" 제목과 × 버튼을 양 끝에 배치 */
-.menu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.menu-header h3 {
-    margin: 0;
-    font-size: 20px;
-}
-
-/* × 닫기 버튼 */
-#closeMenu {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* 드로어 안의 ul — 세로 목록으로 표시 */
-/* position: static 으로 헤더 ul의 absolute 배치 영향을 차단 */
-#slideMenu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: block;
-    position: static;
-}
-
-/* 각 메뉴 항목 */
-#slideMenu li {
-    padding: 15px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* 드로어 링크 — 클릭 영역을 항목 전체로 확장 */
-#slideMenu a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    margin: 0;
-    padding: 5px 0;
-}
-
-#slideMenu a:hover {
-    color: #f0f0f0;
-}
 
 
 /* ── 메인 영역 ──────────────────────────────────────────────── */
 /* max-width: 480px — 모바일 세로 화면 너비로 콘텐츠 폭 제한 */
 /* margin auto — 데스크탑에서도 화면 중앙에 정렬 */
+/* flex: 1 — body의 flex-direction: column과 함께 작동해 footer를 항상 하단으로 밀어냄 */
 main {
     flex: 1;
     max-width: 480px;
@@ -144,13 +52,20 @@ main {
     background-color: #34a86e;
 }
 
+/* ── 테스트 전체 컨테이너 ───────────────────────────────────── */
+/* 진행 바(.progress-box)와 질문 카드(.question-card)를 하나의 박스로 묶음 */
+/* height: 500px — 질문이 바뀌어도 카드 높이가 변하지 않도록 고정 */
 #test-box {
-    width: 100%; height: 500px;
+    width: 100%;
+    height: 500px;
     background-color: #338cc7;
     padding: 20px;
     border-radius: 10px;
 }
 
+/* ── 진행 상태 표시 박스 ────────────────────────────────────── */
+/* 상단 'Q1 / 12'·'0%' 텍스트와 진행 바를 감싸는 컨테이너 */
+/* border, border-radius, box-shadow — question-card와 통일된 시각적 스타일 */
 .progress-box {
     margin: 8px 0 16px;
     border: 2px solid #675e9a;
@@ -160,6 +75,9 @@ main {
     box-shadow: 0 5px 0 rgba(94, 84, 145, 0.18);
 }
 
+/* ── 진행 표시 상단 행 ──────────────────────────────────────── */
+/* 'Q1 / 12'(왼쪽)과 '0%'(오른쪽)를 flex로 양 끝에 정렬 */
+/* JS가 stepText, percentText의 textContent를 바꿔 현재 진행 단계를 표시 */
 .progress-top {
     display: flex;
     justify-content: space-between;
@@ -170,6 +88,9 @@ main {
     font-weight: 950;
 }
 
+/* ── 진행 바 트랙 ───────────────────────────────────────────── */
+/* 채워지는 바(.progress-fill)의 배경 레일 역할 */
+/* overflow: hidden — fill이 border-radius를 벗어나지 않도록 클리핑 */
 .progress-line {
     height: 14px;
     border: 2px solid #675e9a;
@@ -178,6 +99,10 @@ main {
     background: rgba(255, 255, 255, 0.72);
 }
 
+/* ── 진행 바 채우기 ─────────────────────────────────────────── */
+/* JS가 style.width를 '8.3%', '16.6%' ... 순서로 변경하면서 진행 상태를 표시 */
+/* transition: width 0.25s — 값이 바뀔 때 부드럽게 늘어나는 애니메이션 */
+/* background: linear-gradient — 핑크→보라→하늘 그라디언트 색상 */
 .progress-fill {
     width: 0%;
     height: 100%;
@@ -186,6 +111,9 @@ main {
     transition: width 0.25s ease;
 }
 
+/* ── 질문 카드 ──────────────────────────────────────────────── */
+/* 질문 텍스트(#questionTitle)와 선택지 버튼(#optionBox)을 담는 흰색 카드 */
+/* box-shadow: 0 7px 0 — 카드가 아래로 눌린 듯한 입체감 */
 .question-card {
     border: 2px solid #675e9a;
     border-radius: 22px;
@@ -194,6 +122,11 @@ main {
     box-shadow: 0 7px 0 rgba(94, 84, 145, 0.18);
 }
 
+/* ── 선택지 버튼 ────────────────────────────────────────────── */
+/* 사용자가 클릭하는 답변 버튼 — 두 버튼이 세로로 배치됨 */
+/* width: 100% — 카드 전체 너비를 채움 */
+/* min-height: 54px — 텍스트가 2줄이 되어도 높이가 찌그러지지 않음 */
+/* box-shadow: 0 4px 0 — 버튼이 살짝 떠 있는 느낌 */
 .option {
     width: 100%;
     min-height: 54px;
@@ -211,14 +144,16 @@ main {
     box-shadow: 0 4px 0 rgba(97, 87, 150, 0.24);
 }
 
+/* ── 선택지 버튼 그룹 ───────────────────────────────────────── */
+/* margin-top: 148px — 질문 텍스트 아래 빈 공간을 두어 카드 높이를 채움 */
+/* 버튼을 카드 하단에 배치하는 효과 */
 #optionBox {
     margin-top: 148px;
 }
 
 
-
-
 /* ── 푸터 ───────────────────────────────────────────────────── */
+/* 저작권·팀원 정보를 표시하는 하단 영역 */
 footer {
     background-color: #867878;
     color: white;

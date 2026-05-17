@@ -4,52 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>테스트 1 - 성향 테스트</title>
-    <link rel="stylesheet" href="test.css">
-    <link rel="stylesheet" href="mobile.css">
-    <link rel="stylesheet" href="test-tablet.css">
-    <script src="main.js"></script>
+    <link rel="stylesheet" href="test.css">    <!-- 테스트 페이지 전용 스타일 (모든 화면에서 모바일 세로 레이아웃으로 고정) -->
+    <link rel="stylesheet" href="mobile.css">    <!-- 1024px 이하 추가 오버라이드 (#optionBox 여백 조정 등) -->
+    <link rel="stylesheet" href="test-tablet.css">    <!-- 769px~1024px 태블릿 전용 추가 스타일 -->
+
+    <!-- 테스트 1 질문 진행·점수 계산·결과 이동 담당 JS -->
     <script src="test1.js"></script>
 </head>
 <body>
+    <!-- ── 헤더: 사이트 제목 + 햄버거 버튼 ──────────────────────── -->
     <header>
         <h1>성향 테스트</h1>
-        <button id="mobileMenu">☰</button>
     </header>
-    <nav id="slideMenu">
-        <div class="menu-header">
-            <h3>메뉴</h3>
-            <button id="closeMenu">&times;</button>
-        </div>
-        <ul>
-            <li><a href="#">Lorem, ipsum dolor.</a></li>
-            <li><a href="#">Lorem, ipsum dolor.</a></li>
-            <li><a href="#">Lorem, ipsum dolor.</a></li>
-            <li><a href="#">Lorem, ipsum dolor.</a></li>
-            <li><a href="#">Lorem, ipsum dolor.</a></li>
-        </ul>
-    </nav>
+
+
+    <!-- ── 메인 콘텐츠 영역 ────────────────────────────────────────── -->
     <main>
+        <!-- 메인 페이지로 돌아가는 링크 -->
         <a href="index.html">← 메인으로 돌아가기</a>
-        <h2>테스트 1</h2>
+        <h2>개발자 성향 테스트</h2>
+
+        <!-- 테스트 전체 컨테이너: 진행 바 + 질문 카드를 하나의 박스로 묶음 -->
         <div id="test-box">
+
+            <!-- 진행 상태 표시 박스: 현재 질문 번호와 진행률 -->
             <div class="progress-box">
-              <div class="progress-top">
-                <span id="stepText">Q1 / 12</span>
-                <span id="percentText">0%</span>
-              </div>
-              <div class="progress-line">
-                <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
-              </div>
+                <!-- 진행 표시 상단 행: Q번호(왼쪽)와 퍼센트(오른쪽) -->
+                <!-- JS가 stepText, percentText의 textContent를 업데이트 -->
+                <div class="progress-top">
+                    <span id="stepText">Q1 / 12</span>
+                    <span id="percentText">0%</span>
+                </div>
+                <!-- 진행 바 트랙: .progress-fill이 width를 늘려가며 진행도를 시각화 -->
+                <div class="progress-line">
+                    <!-- JS가 style.width를 '8.3%', '16.6%' ... 순으로 변경 -->
+                    <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+                </div>
             </div>
+
+            <!-- 질문 카드: 질문 텍스트와 선택지 버튼을 담는 흰색 카드 -->
             <div class="question-card">
-              <h2 class="q-title" id="questionTitle">팀 프로젝트 회의를 할 때 나는?</h2>
-              <div id="optionBox">
-                <button class="option"><span>내 의견을 적극적으로 말하며 주도한다.</span></button>
-                <button class="option"><span>다른 사람의 의견을 먼저 듣고 정리한다.</span></button>
+                <!-- 질문 본문: JS가 questionTitle의 textContent를 업데이트 -->
+                <h2 class="q-title" id="questionTitle">팀 프로젝트 회의를 할 때 나는?</h2>
+
+                <!-- 선택지 버튼 그룹: 두 버튼 중 하나를 클릭하면 다음 질문으로 이동 -->
+                <!-- JS는 .option:nth-child(1), .option:nth-child(2)로 두 버튼을 참조 -->
+                <div id="optionBox">
+                    <!-- 선택지 1: E/S/T/J 성향 — 클릭 시 해당 차원 점수 +1 -->
+                    <button class="option"><span>내 의견을 적극적으로 말하며 주도한다.</span></button>
+                    <!-- 선택지 2: I/N/F/P 성향 — 클릭 시 점수 변화 없음 -->
+                    <button class="option"><span>다른 사람의 의견을 먼저 듣고 정리한다.</span></button>
+                </div>
             </div>
-            </div>
-        </div>
+
+        </div><!-- /#test-box -->
     </main>
+
+    <!-- ── 푸터: 저작권·팀원 정보 ─────────────────────────────────── -->
     <footer>
         <p>© 웹프로그래밍 팀 프로젝트 by 이승엽, 박민성, 신민철</p>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto quae quas labore ipsa quos commodi qui quisquam eius esse in. Vero ipsa vitae id hic nulla porro architecto minus labore. Totam architecto reprehenderit illum doloremque autem quod quibusdam! Nobis exercitationem cumque fuga nisi. Iste doloremque culpa ea deleniti repellat ab.</p>

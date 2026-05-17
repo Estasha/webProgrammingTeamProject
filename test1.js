@@ -144,9 +144,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let JP = jpSum > 1.5 ? 'J' : 'P';
         let mbti = EI + SN + TF + JP;
 
-        // TODO: 결과 페이지로 이동하는 로직으로 교체
-        // 예: window.location.href = 'result.html?type=' + mbti;
-        alert('당신의 개발자 MBTI: ' + mbti);
+        // URL 파라미터로 MBTI 유형을 넘기며 결과 페이지로 이동
+        window.location.href = 'result.html?type=' + mbti;
     }
 
     // ─── 9. 버튼 이벤트 등록 ──────────────────────────────────────────────
