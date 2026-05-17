@@ -1,13 +1,18 @@
-/*단위 px로 통일*/
+/* 단위 px로 통일 */
+/* 데스크탑 기본 스타일 — mobile.css · tablet.css가 미디어쿼리로 덮어씀 */
 
-/* 전체 초기화 */
+/* ── 전체 초기화 ────────────────────────────────────────────── */
+/* 브라우저 기본 margin/padding 제거, box-sizing을 border-box로 통일해 width 계산을 단순화 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* 헤더 스타일 */
+
+
+/* ── 헤더 ───────────────────────────────────────────────────── */
+/* position: relative — 자식인 ul(absolute)의 기준점이 됨 */
 header {
     background-color: #867878;
     color: white;
@@ -15,18 +20,66 @@ header {
     position: relative;
 }
 
+
+
+/* 햄버거 버튼은 데스크탑에서 숨김 — mobile.css에서 ≤1024px일 때 다시 표시 */
 header button {
     display: none;
 }
 
-/* 메인 스타일 */
-main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 0 10px;
+
+
+/* ── 광고 배너 ──────────────────────────────────────────────── */
+/* grid-column: 1 / -1 → 전체 열(1열~마지막 열)을 가로질러 배너가 전체 폭 차지 */
+#ad-banner {
+    grid-column: 1 / -1;
 }
 
-/* 푸터 스타일 */
+
+
+/* 배너 이미지가 부모 너비에 맞게 자동으로 줄어들고, 세로는 비율 유지 */
+#ad-banner img {
+    width: 100%;
+    height: auto;
+    display: block;  /* 이미지 하단 기본 여백(인라인 요소 특성) 제거 */
+}
+
+
+/* ── 메인 영역 ──────────────────────────────────────────────── */
+/* max-width + margin auto 조합으로 콘텐츠를 화면 중앙에 고정 */
+main {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #34a86e;
+}
+
+
+/* ── 그리드 컨테이너 ─────────────────────────────────────────── */
+/* 아이템을 3열로 배치 — 각 열은 남은 공간을 균등 분할(1fr) */
+/* mobile.css의 ≤768px 미디어쿼리에서 1열로 전환됨 */
+#main-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;      /* 아이템 간 여백 */
+    padding: 10px;
+}
+
+
+/* ── 테스트 아이템 카드 ─────────────────────────────────────── */
+/* <a> 태그를 블록으로 표시해 클릭 영역이 카드 전체가 되도록 설정 */
+/* text-decoration: none — 링크 밑줄 제거 */
+.item {
+    height: 200px;
+    background-color: #172952;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+/* ── 푸터 ───────────────────────────────────────────────────── */
 footer {
     background-color: #867878;
     color: white;
@@ -35,7 +88,10 @@ footer {
     margin-top: 20px;
 }
 
-/* ul 스타일 */
+
+/* ── 헤더 내비게이션 목록 ───────────────────────────────────── */
+/* position: absolute + right: 0 으로 헤더 오른쪽 끝에 붙임 */
+/* top: 50% — 헤더 세로 중앙에 정렬 */
 ul {
     list-style: none;
     display: flex;
@@ -44,16 +100,18 @@ ul {
     top: 50%;
 }
 
-/* a태그 스타일 */
+
+/* ── 앵커 태그 전역 초기화 ──────────────────────────────────── */
+/* 헤더 nav 링크의 기본 스타일 — .item처럼 별도 색상이 필요한 경우 개별 선택자로 덮어씀 */
 a {
     text-decoration: none;
     color: white;
     margin-left: 20px;
 }
 
-/* 데스크탑 환경에서 슬라이드 메뉴 숨기기 */
+
+/* ── 슬라이드 메뉴 (데스크탑에서 숨김) ─────────────────────── */
+/* mobile.css에서 ≤1024px일 때 display: block으로 바뀌고 fixed 드로어로 동작 */
 #slideMenu {
     display: none;
 }
-
-

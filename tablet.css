@@ -1,0 +1,10 @@
+/* 태블릿 전용 스타일 (769px ~ 1024px) */
+/* mobile.css의 ≤1024px 미디어쿼리와 겹치지만, 태블릿에만 적용할 스타일이 생기면 여기에 작성 */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+    /* 태블릿에서는 main이 화면 전체 너비를 사용하되 여백 유지 */
+    main {
+        max-width: 100%;
+        padding: 10px;
+    }
+}
