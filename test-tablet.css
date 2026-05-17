@@ -4,7 +4,7 @@
 
     /* 태블릿에서는 main이 화면 전체 너비를 사용하되 여백 유지 */
     main {
-        max-width: 80%;
+        max-width: 480px;
         padding: 10px;
     }
 }

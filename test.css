@@ -26,7 +26,7 @@ header > ul {
 /* 햄버거 버튼 — 화면 크기와 무관하게 항상 표시 */
 /* 헤더 오른쪽 끝, 세로 중앙에 고정 */
 #mobileMenu {
-    display: block;
+    display: none;
     position: absolute;
     right: 20px;
     top: 50%;
@@ -49,7 +49,7 @@ a {
 /* 화면 크기와 무관하게 항상 fixed 드로어 방식으로 동작 */
 /* 평소에는 right: -300px 으로 화면 밖에 숨어 있음 */
 #slideMenu {
-    display: block;
+    display: none;
     position: fixed;
     top: 0;
     right: -300px;
@@ -202,6 +202,13 @@ main {
     cursor: pointer;
     box-shadow: 0 4px 0 rgba(97, 87, 150, 0.24);
 }
+
+#optionBox {
+    margin-top: 148px;
+}
+
+
+
 
 /* ── 푸터 ───────────────────────────────────────────────────── */
 footer {
