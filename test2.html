@@ -7,19 +7,20 @@
     <link rel="stylesheet" href="test.css">    <!-- 테스트 페이지 전용 스타일 (모든 화면에서 모바일 세로 레이아웃으로 고정) -->
     <link rel="stylesheet" href="mobile.css">    <!-- 1024px 이하 추가 오버라이드 (#optionBox 여백 조정 등) -->
     <link rel="stylesheet" href="test-tablet.css">    <!-- 769px~1024px 태블릿 전용 추가 스타일 -->
-
+    <!-- 인간관계 소비 성향 테스트 질문 진행·점수 계산·결과 이동 담당 JS -->
+    <script src="test2.js"></script>
 </head>
 <body>
     <!-- ── 헤더: 사이트 제목 ─────── -->
     <header>
-        <h1>성향 테스트</h1>
+        <h1>인간관계 소비 성향 테스트</h1>
     </header>
 
     <!-- ── 메인 콘텐츠 영역 ────────────────────────────────────────── -->
     <main>
         <!-- 메인 페이지로 돌아가는 링크 -->
         <a href="index.html">← 메인으로 돌아가기</a>
-        <h2>테스트 2</h2>
+        <h2>인간관계 소비 성향 테스트</h2>
 
         <!-- 테스트 전체 컨테이너: 진행 바 + 질문 카드를 하나의 박스로 묶음 -->
         <div id="test-box">
@@ -39,15 +40,16 @@
 
             <!-- 질문 카드: 질문 텍스트와 선택지 버튼을 담는 흰색 카드 -->
             <div class="question-card">
-                <!-- 질문 본문: JS가 textContent를 업데이트 -->
-                <h2 class="q-title" id="questionTitle">---</h2>
+                <!-- 질문 본문: Q1은 하드코딩, Q2~Q12는 JS가 textContent를 업데이트 -->
+                <h2 class="q-title" id="questionTitle">모임에서 어색한 분위기가 생기면?</h2>
 
-                <!-- 선택지 버튼 그룹 (현재 4개 배치) -->
+                <!-- 선택지 버튼 그룹: Q1 텍스트 하드코딩, 이후 JS가 교체 -->
+                <!-- JS는 .option:nth-child(1), .option:nth-child(2)로 두 버튼을 참조 -->
                 <div id="optionBox">
-                    <button class="option"><span></span></button>
-                    <button class="option"><span></span></button>
-                    <button class="option"><span></span></button>
-                    <button class="option"><span></span></button>
+                    <!-- 선택지 1: E/F/A 성향 — 클릭 시 해당 차원 점수 +1 -->
+                    <button class="option"><span>내가 분위기를 풀려고 한다</span></button>
+                    <!-- 선택지 2: I/T/C 성향 — 클릭 시 점수 변화 없음 -->
+                    <button class="option"><span>조용히 상황을 본다</span></button>
                 </div>
             </div>
 

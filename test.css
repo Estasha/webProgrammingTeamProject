@@ -46,6 +46,7 @@ a {
 /* flex: 1 — body의 flex-direction: column과 함께 작동해 footer를 항상 하단으로 밀어냄 */
 main {
     flex: 1;
+    width: 100%;
     max-width: 480px;
     margin: 20px auto;
     padding: 15px;
@@ -55,6 +56,7 @@ main {
 /* ── 테스트 전체 컨테이너 ───────────────────────────────────── */
 /* 진행 바(.progress-box)와 질문 카드(.question-card)를 하나의 박스로 묶음 */
 /* height: 500px — 질문이 바뀌어도 카드 높이가 변하지 않도록 고정 */
+/* width: 100% — 질문이 바뀌어도 카드 너비가 변하지 않도록 고정 */  
 #test-box {
     width: 100%;
     height: 500px;
@@ -120,6 +122,10 @@ main {
     padding: 18px 13px 16px;
     background: rgba(255, 255, 255, 0.72);
     box-shadow: 0 7px 0 rgba(94, 84, 145, 0.18);
+}
+
+#questionTitle {
+    height: 30px;
 }
 
 /* ── 선택지 버튼 ────────────────────────────────────────────── */

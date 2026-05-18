@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- lang="ko": 검색엔진·스크린리더에 한국어 문서임을 알림 -->
+<html lang="ko">
+<head>
+    <!-- charset: 한국어 등 다국어 문자 깨짐 방지 -->
+    <meta charset="UTF-8">
+    <!-- viewport: 모바일 기기에서 화면 너비를 기기 너비로 맞추고 기본 확대 배율을 1로 고정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결과 - 인간관계 소비 성향 테스트</title>
+    <!-- 테스트 페이지 공통 레이아웃 (header, footer, main 스타일 포함) -->
+    <link rel="stylesheet" href="test.css">
+    <!-- 결과 카드·버튼 전용 스타일 (test.css 위에 추가) -->
+    <link rel="stylesheet" href="result.css">
+    <!-- URL 파라미터(?type=EFA)를 읽어 결과 카드에 인간관계 유형 데이터를 표시하는 JS -->
+    <script src="result2.js"></script>
+</head>
+<body>
+    <!-- ── 헤더: 사이트 제목 ──────────────────────────────────────── -->
+    <header>
+        <h1>인간관계 소비 성향 테스트</h1>
+    </header>
+
+    <!-- ── 메인 콘텐츠 영역 ────────────────────────────────────────── -->
+    <main>
+        <!-- 메인 페이지로 돌아가는 링크 -->
+        <a href="index.html">← 메인으로 돌아가기</a>
+        <h2>인간관계 소비 성향 테스트 결과</h2>
+
+        <!-- 결과 전체 컨테이너: test.css의 #test-box와 동일한 파란색 배경 박스 -->
+        <div id="result-box">
+
+            <!-- 결과 카드: 유형 코드·별명·설명·버튼을 담는 흰색 카드 -->
+            <!-- JS(result2.js)가 DOMContentLoaded 후 URL 파라미터를 읽어 내용을 채움 -->
+            <div id="result-card">
+
+                <!-- "당신의 인간관계 유형은" 안내 문구 -->
+                <p id="result-label">당신의 인간관계 유형은</p>
+
+                <!-- 유형 코드 3글자 (예: EFA) — JS가 textContent를 채움, 초기값은 빈 자리 표시 -->
+                <p id="result-type">---</p>
+
+                <!-- 유형 별명 (예: 24시간 상담센터형) — JS가 textContent를 채움 -->
+                <p id="result-nickname">불러오는 중...</p>
+
+                <!-- 별명과 설명 사이 구분선 -->
+                <hr id="result-divider">
+
+                <!-- 팩폭 한 줄 설명 — JS가 textContent를 채움 -->
+                <p id="result-desc"></p>
+
+                <!-- 하단 버튼 그룹 -->
+                <div id="result-buttons">
+                    <!-- 다시 테스트: test2.html로 이동 -->
+                    <a href="test2.html" id="retake-btn">다시 테스트하기</a>
+                    <!-- 메인으로: index.html로 이동 -->
+                    <a href="index.html" id="home-btn">메인으로</a>
+                </div>
+
+            </div><!-- /#result-card -->
+        </div><!-- /#result-box -->
+    </main>
+
+    <!-- ── 푸터: 저작권·팀원 정보 ─────────────────────────────────── -->
+    <footer>
+        <p>© 웹프로그래밍 팀 프로젝트 by 이승엽, 박민성, 신민철</p>
+    </footer>
+</body>
+</html>
