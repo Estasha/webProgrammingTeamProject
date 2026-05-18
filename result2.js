@@ -65,4 +65,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 페이지 제목도 유형에 맞게 업데이트
     document.title = data.nickname + ' — 인간관계 소비 성향 테스트 결과';
+
+    // ─── 공유하기 버튼 ────────────────────────────────────────────────
+    const shareBtn = document.getElementById('share-btn');
+    shareBtn.addEventListener('click', function() {
+        if (navigator.share) {
+            navigator.share({
+                title: type + ' — 인간관계 소비 성향 테스트 결과',
+                text: type + ' ' + data.nickname + '\n' + data.desc,
+                url: window.location.href
+            });
+        } else {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                shareBtn.textContent = '링크 복사됨 ✓';
+                setTimeout(function() { shareBtn.textContent = '공유하기'; }, 2000);
+            });
+        }
+    });
 });

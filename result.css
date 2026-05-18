@@ -108,6 +108,27 @@
     background: linear-gradient(180deg, #f5f1ff, #ebe5ff);
 }
 
+/* 공유하기 버튼 — 파란색 계열로 차별화 */
+#share-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(180deg, #fff, #e8f5ff);
+    color: #338cc7;
+    font-size: 15px;
+    font-weight: 800;
+    border: 2px solid #338cc7;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 0 rgba(51, 140, 199, 0.24);
+    cursor: pointer;
+    font-family: inherit;
+}
+
+#share-btn:hover {
+    background: linear-gradient(180deg, #e8f5ff, #d0eaff);
+}
+
 /* h2 — 테스트 페이지의 제목과 일관된 스타일 */
 main > h2 {
     margin: 12px 0 0;

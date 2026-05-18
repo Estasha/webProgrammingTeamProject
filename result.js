@@ -48,4 +48,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 페이지 제목도 유형에 맞게 업데이트
     document.title = type + ' — 개발자 MBTI 결과';
+
+    // ─── 공유하기 버튼 ────────────────────────────────────────────────
+    // Web Share API 지원 환경(주로 모바일)에서는 네이티브 공유 시트를 열고,
+    // 미지원 환경(데스크탑 등)에서는 링크를 클립보드에 복사한다.
+    const shareBtn = document.getElementById('share-btn');
+    shareBtn.addEventListener('click', function() {
+        if (navigator.share) {
+            navigator.share({
+                title: type + ' — 개발자 MBTI 테스트 결과',
+                text: type + ' ' + data.nickname + '\n' + data.desc,
+                url: window.location.href
+            });
+        } else {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                shareBtn.textContent = '링크 복사됨 ✓';
+                setTimeout(function() { shareBtn.textContent = '공유하기'; }, 2000);
+            });
+        }
+    });
 });
