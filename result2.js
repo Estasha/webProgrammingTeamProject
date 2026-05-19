@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (navigator.share) {
             navigator.share({
                 title: type + ' — 인간관계 소비 성향 테스트 결과',
-                text: type + ' ' + data.nickname + '\n' + data.desc,
+
                 url: window.location.href
             });
         } else {
