@@ -2,142 +2,147 @@
 /* 데스크탑 기본 스타일 — mobile.css · tablet.css가 미디어쿼리로 덮어씀 */
 
 /* ── 전체 초기화 ────────────────────────────────────────────── */
-/* 브라우저 기본 margin/padding 제거, box-sizing을 border-box로 통일해 width 계산을 단순화 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
-/* min-height: 100vh — 콘텐츠가 짧아도 body가 화면 전체 높이를 차지 */
-/* flex-direction: column — header·main·footer를 세로로 쌓음 */
-/* footer가 항상 화면 하단에 붙도록 main이 남은 공간을 채우는 구조 */
+/* ── 레이아웃 뼈대 ──────────────────────────────────────────── */
 body {
-    background-color: #f6f2ed;
+    background: linear-gradient(160deg, #f0eeff 0%, #e8f3ff 100%);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
 }
 
-
 /* ── 헤더 ───────────────────────────────────────────────────── */
-/* position: relative — 자식인 ul(absolute)의 기준점이 됨 */
 header {
-    background-color: #9d8ee0;
+    background: linear-gradient(135deg, #a18cd1 0%, #7b68c8 100%);
     color: white;
-    padding: 20px;
+    padding: 20px 24px;
     position: relative;
 }
 
+header h1 {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+}
 
 /* ── 광고 배너 ──────────────────────────────────────────────── */
-/* grid-column: 1 / -1 → 전체 열(1열~마지막 열)을 가로질러 배너가 전체 폭 차지 */
 #ad-banner {
     grid-column: 1 / -1;
 }
 
-
-
-/* 배너 이미지가 부모 너비에 맞게 자동으로 줄어들고, 세로는 비율 유지 */
 #ad-banner img {
     width: 100%;
     height: auto;
-    display: block;  /* 이미지 하단 기본 여백(인라인 요소 특성) 제거 */
+    display: block;
     border-radius: 18px;
 }
 
-
 /* ── 메인 영역 ──────────────────────────────────────────────── */
-/* max-width + margin auto 조합으로 콘텐츠를 화면 중앙에 고정 */
-/* flex: 1 은 위 body 선언과 함께 작동 — footer를 항상 하단으로 밀어냄 */
 main {
     flex: 1;
     max-width: 1000px;
-    margin: 20px auto;
-    padding: 10px;
+    margin: 32px auto;
+    padding: 0 16px;
     width: 100%;
 }
 
 /* ── 소개 텍스트 박스 ──────────────────────────────────────────── */
-/* #main-box 안에서 소개 문구 위아래에 여백을 주어 광고 배너·테스트 그리드와 간격을 둠 */
 #title-box {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin: 32px 0 28px;
+}
+
+#title-box h1 {
+    font-size: 26px;
+    font-weight: 900;
+    color: #2a2250;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+#title-box p {
+    font-size: 15px;
+    color: #8078aa;
+    line-height: 1.75;
 }
 
 /* ── 그리드 컨테이너 ─────────────────────────────────────────── */
-/* 아이템을 3열로 배치 — 각 열은 남은 공간을 균등 분할(1fr) */
-/* mobile.css의 ≤768px 미디어쿼리에서 1열로 전환됨 */
 #test-box {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;      /* 아이템 간 여백 */
-    padding: 10px;
-    background-color: #0c6e75;
-
-    border-radius: 18px;
+    gap: 16px;
+    padding: 20px;
+    background: linear-gradient(160deg, #ede8ff 0%, #daeeff 100%);
+    border-radius: 22px;
+    box-shadow: 0 8px 32px rgba(100, 80, 200, 0.1);
 }
 
-
 /* ── 테스트 아이템 카드 ─────────────────────────────────────── */
-/* <a> 태그를 블록으로 표시해 클릭 영역이 카드 전체가 되도록 설정 */
-/* text-decoration: none — 링크 밑줄 제거 */
 .item {
-    height: 200px;
-    margin: 20px;
-    background-color: #ffffff;
+    background: #ffffff;
     display: block;
     text-decoration: none;
     cursor: pointer;
-    
     border-radius: 18px;
+    border: 1.5px solid rgba(130, 100, 210, 0.15);
+    box-shadow: 0 4px 16px rgba(100, 80, 200, 0.07);
+    padding: 20px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(100, 80, 200, 0.15);
 }
 
 /* ── 카테고리 태그 ───────────────────────────────────────────── */
-/* 각 테스트 카드 상단의 "심리" 같은 배지 */
-/* border-radius: 20px — pill 형태 */
-/* width: fit-content — 텍스트 길이에 맞게 너비 자동 조절 */
 .tagBox {
-    background-color: #000000fb;
+    display: inline-block;
+    background: linear-gradient(135deg, #a18cd1, #7b68c8);
     color: white;
-    padding: 4px 15px;
+    padding: 4px 14px;
     border-radius: 20px;
-    margin: 10px;
-
-    width: fit-content;
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-bottom: 14px;
 }
 
 /* ── 테스트 카드 제목 영역 ───────────────────────────────────── */
-/* tagBox 아래의 h3 제목을 감싸는 div — 좌우·상하 여백만 추가 */
 .info-tag {
-    margin: 10px;
+    margin-bottom: 8px;
+}
+
+.info-tag h3 {
+    font-size: 17px;
+    font-weight: 800;
+    color: #2a2250;
+    letter-spacing: -0.3px;
 }
 
 /* ── 테스트 카드 설명 텍스트 ─────────────────────────────────── */
-/* 카드 하단 소개 문구 — 작은 폰트, 갈색 계열 색상으로 시각적 계층 구분 */
 .info-desc {
-    margin: 10px;
-    font-size: 14px;
-    color: rgb(114, 74, 48);
+    font-size: 13px;
+    color: #8078aa;
+    line-height: 1.65;
 }
-
 
 /* ── 푸터 ───────────────────────────────────────────────────── */
 footer {
-    background-color: #9d8ee0;
-    color: white;
+    background: linear-gradient(135deg, #a18cd1 0%, #7b68c8 100%);
+    color: rgba(255, 255, 255, 0.9);
     text-align: center;
-    padding: 10px;
+    padding: 16px;
     margin-top: 20px;
-
+    font-size: 13px;
 }
 
-
 /* ── 헤더 내비게이션 목록 ───────────────────────────────────── */
-/* position: absolute + right: 0 으로 헤더 오른쪽 끝에 붙임 */
-/* top: 50% — 헤더 세로 중앙에 정렬 */
 ul {
     list-style: none;
     display: flex;
@@ -146,14 +151,9 @@ ul {
     top: 50%;
 }
 
-
 /* ── 앵커 태그 전역 초기화 ──────────────────────────────────── */
-/* 헤더 nav 링크의 기본 스타일 — .item처럼 별도 색상이 필요한 경우 개별 선택자로 덮어씀 */
 a {
     text-decoration: none;
-    color: white;
+    color: #2a2250;
     margin-left: 20px;
-    color: black;
 }
-
-

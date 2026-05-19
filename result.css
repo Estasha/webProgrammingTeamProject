@@ -1,23 +1,23 @@
 /* result.css — 결과 페이지 전용 스타일 */
-/* test.css의 공통 레이아웃(header, footer, main, slideMenu)을 기반으로 */
-/* 결과 카드에만 필요한 스타일을 여기에 추가한다. */
+/* test.css의 공통 레이아웃(header, footer, main)을 기반으로 결과 카드에만 필요한 스타일 추가 */
 
-/* ── 결과 박스 — test.css의 #test-box와 동일한 느낌 ─────────────── */
+/* ── 결과 박스 ───────────────────────────────────────────────── */
 #result-box {
     width: 100%;
-    background-color: #338cc7;
-    border-radius: 10px;
+    background: linear-gradient(160deg, #ede8ff 0%, #daeeff 100%);
+    border-radius: 22px;
     padding: 20px;
     margin-top: 16px;
+    box-shadow: 0 8px 32px rgba(100, 80, 200, 0.1);
 }
 
-/* ── 결과 카드 — test.css의 .question-card와 동일한 테두리·그림자 ─── */
+/* ── 결과 카드 ───────────────────────────────────────────────── */
 #result-card {
-    border: 2px solid #675e9a;
+    border: 1.5px solid rgba(130, 100, 210, 0.2);
     border-radius: 22px;
-    padding: 32px 20px 24px;
-    background: rgba(255, 255, 255, 0.88);
-    box-shadow: 0 7px 0 rgba(94, 84, 145, 0.18);
+    padding: 36px 24px 28px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 6px 20px rgba(100, 80, 200, 0.09);
     text-align: center;
 }
 
@@ -25,40 +25,43 @@
 #result-label {
     font-size: 13px;
     font-weight: 700;
-    color: #6558a4;
+    color: #8078aa;
     letter-spacing: 0.5px;
     margin-bottom: 10px;
 }
 
-/* MBTI 유형 4글자 — 가장 크게 강조 */
+/* 유형 코드 — 그라디언트 텍스트로 강조 */
 #result-type {
     font-size: 56px;
     font-weight: 900;
-    color: #675e9a;
+    background: linear-gradient(135deg, #a18cd1, #7b68c8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     letter-spacing: 6px;
     margin-bottom: 10px;
     line-height: 1;
 }
 
-/* 개발자 별명 */
+/* 유형 별명 */
 #result-nickname {
     font-size: 22px;
     font-weight: 800;
-    color: #302b50;
+    color: #2a2250;
     margin-bottom: 16px;
 }
 
 /* 구분선 */
 #result-divider {
     border: none;
-    border-top: 2px solid rgba(103, 94, 154, 0.2);
+    border-top: 1.5px solid rgba(130, 100, 210, 0.15);
     margin: 0 0 16px;
 }
 
 /* 한 줄 특징 설명 */
 #result-desc {
     font-size: 15px;
-    color: #555;
+    color: #8078aa;
     line-height: 1.7;
     margin-bottom: 32px;
     padding: 0 4px;
@@ -71,41 +74,45 @@
     gap: 12px;
 }
 
-/* 다시 테스트하기 버튼 — 채워진 보라색 */
+/* 다시 테스트하기 버튼 — 채워진 보라 그라디언트 */
 #retake-btn {
     display: block;
     padding: 14px;
-    background: linear-gradient(180deg, #9d8ee0, #675e9a);
+    background: linear-gradient(135deg, #a18cd1, #7b68c8);
     color: white;
     font-size: 15px;
     font-weight: 800;
     border-radius: 16px;
     text-align: center;
-    box-shadow: 0 4px 0 rgba(97, 87, 150, 0.4);
+    box-shadow: 0 5px 16px rgba(100, 80, 200, 0.28);
     text-decoration: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 #retake-btn:hover {
     opacity: 0.9;
+    transform: translateY(-1px);
 }
 
 /* 메인으로 버튼 — 테두리만 있는 흰색 */
 #home-btn {
     display: block;
     padding: 14px;
-    background: linear-gradient(180deg, #fff, #f5f1ff);
-    color: #675e9a;
+    background: #ffffff;
+    color: #7b68c8;
     font-size: 15px;
     font-weight: 800;
-    border: 2px solid #675e9a;
+    border: 1.5px solid rgba(130, 100, 210, 0.35);
     border-radius: 16px;
     text-align: center;
-    box-shadow: 0 4px 0 rgba(97, 87, 150, 0.24);
+    box-shadow: 0 3px 10px rgba(100, 80, 200, 0.08);
     text-decoration: none;
+    transition: background 0.15s ease, transform 0.15s ease;
 }
 
 #home-btn:hover {
-    background: linear-gradient(180deg, #f5f1ff, #ebe5ff);
+    background: #f5f1ff;
+    transform: translateY(-1px);
 }
 
 /* 공유하기 버튼 — 파란색 계열로 차별화 */
@@ -113,25 +120,20 @@
     display: block;
     width: 100%;
     padding: 14px;
-    background: linear-gradient(180deg, #fff, #e8f5ff);
-    color: #338cc7;
+    background: #ffffff;
+    color: #5b8dee;
     font-size: 15px;
     font-weight: 800;
-    border: 2px solid #338cc7;
+    border: 1.5px solid rgba(91, 141, 238, 0.35);
     border-radius: 16px;
     text-align: center;
-    box-shadow: 0 4px 0 rgba(51, 140, 199, 0.24);
+    box-shadow: 0 3px 10px rgba(91, 141, 238, 0.08);
     cursor: pointer;
     font-family: inherit;
+    transition: background 0.15s ease, transform 0.15s ease;
 }
 
 #share-btn:hover {
-    background: linear-gradient(180deg, #e8f5ff, #d0eaff);
-}
-
-/* h2 — 테스트 페이지의 제목과 일관된 스타일 */
-main > h2 {
-    margin: 12px 0 0;
-    font-size: 18px;
-    color: #302b50;
+    background: #eef3ff;
+    transform: translateY(-1px);
 }

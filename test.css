@@ -3,7 +3,6 @@
 /* 데스크탑·태블릿·모바일 모든 화면에서 모바일 세로 모드 레이아웃으로 동작 */
 
 /* ── 전체 초기화 ────────────────────────────────────────────── */
-/* 브라우저 기본 margin/padding 제거, box-sizing을 border-box로 통일해 width 계산을 단순화 */
 * {
     margin: 0;
     padding: 0;
@@ -11,100 +10,99 @@
 }
 
 /* ── 레이아웃 뼈대 ──────────────────────────────────────────── */
-/* min-height: 100vh — 콘텐츠가 짧아도 body가 화면 전체 높이를 차지 */
-/* flex-direction: column — header·main·footer를 세로로 쌓음 */
-/* footer가 항상 화면 하단에 붙도록 main이 남은 공간을 채우는 구조 */
 body {
-    background-color: #f6f2ed;
+    background: linear-gradient(160deg, #f0eeff 0%, #e8f3ff 100%);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
 }
 
 /* ── 헤더 ───────────────────────────────────────────────────── */
 header {
-    background-color: #867878;
+    background: linear-gradient(135deg, #a18cd1 0%, #7b68c8 100%);
     color: white;
-    padding: 20px;
+    padding: 20px 24px;
     position: relative;
 }
 
-
-
 /* ── 앵커 태그 전역 초기화 ──────────────────────────────────── */
-/* 페이지 내 모든 링크의 밑줄 제거, 흰색으로 초기화 */
 a {
     text-decoration: none;
     color: white;
 }
 
-
-
 /* ── 메인 영역 ──────────────────────────────────────────────── */
+/* width: 100% — main에 명시적 너비를 주어 flex 컨테이너에서 콘텐츠 폭으로 수축하지 않도록 고정 */
 /* max-width: 480px — 모바일 세로 화면 너비로 콘텐츠 폭 제한 */
-/* margin auto — 데스크탑에서도 화면 중앙에 정렬 */
-/* flex: 1 — body의 flex-direction: column과 함께 작동해 footer를 항상 하단으로 밀어냄 */
 main {
     flex: 1;
     width: 100%;
     max-width: 480px;
-    margin: 20px auto;
+    margin: 24px auto;
     padding: 15px;
-    background-color: #34a86e;
+}
+
+/* ── 메인으로 돌아가기 링크 ──────────────────────────────────── */
+main > a {
+    display: inline-block;
+    color: #7b68c8;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+/* ── 테스트·결과 페이지 제목 ─────────────────────────────────── */
+main > h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #2a2250;
+    margin-bottom: 16px;
 }
 
 /* ── 테스트 전체 컨테이너 ───────────────────────────────────── */
-/* 진행 바(.progress-box)와 질문 카드(.question-card)를 하나의 박스로 묶음 */
 /* height: 500px — 질문이 바뀌어도 카드 높이가 변하지 않도록 고정 */
-/* width: 100% — 질문이 바뀌어도 카드 너비가 변하지 않도록 고정 */  
 #test-box {
     width: 100%;
     height: 500px;
-    background-color: #338cc7;
+    background: linear-gradient(160deg, #ede8ff 0%, #daeeff 100%);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 22px;
+    box-shadow: 0 8px 32px rgba(100, 80, 200, 0.1);
 }
 
 /* ── 진행 상태 표시 박스 ────────────────────────────────────── */
-/* 상단 'Q1 / 12'·'0%' 텍스트와 진행 바를 감싸는 컨테이너 */
-/* border, border-radius, box-shadow — question-card와 통일된 시각적 스타일 */
 .progress-box {
     margin: 8px 0 16px;
-    border: 2px solid #675e9a;
+    border: 1.5px solid rgba(130, 100, 210, 0.25);
     border-radius: 18px;
     padding: 12px;
-    background: rgba(255, 255, 255, 0.68);
-    box-shadow: 0 5px 0 rgba(94, 84, 145, 0.18);
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 4px 12px rgba(100, 80, 200, 0.07);
 }
 
 /* ── 진행 표시 상단 행 ──────────────────────────────────────── */
-/* 'Q1 / 12'(왼쪽)과 '0%'(오른쪽)를 flex로 양 끝에 정렬 */
-/* JS가 stepText, percentText의 textContent를 바꿔 현재 진행 단계를 표시 */
 .progress-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 9px;
-    color: #6558a4;
+    color: #7b68c8;
     font-size: 13px;
-    font-weight: 950;
+    font-weight: 800;
 }
 
 /* ── 진행 바 트랙 ───────────────────────────────────────────── */
-/* 채워지는 바(.progress-fill)의 배경 레일 역할 */
-/* overflow: hidden — fill이 border-radius를 벗어나지 않도록 클리핑 */
 .progress-line {
     height: 14px;
-    border: 2px solid #675e9a;
+    border: 1.5px solid rgba(130, 100, 210, 0.25);
     border-radius: 999px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(255, 255, 255, 0.6);
 }
 
 /* ── 진행 바 채우기 ─────────────────────────────────────────── */
 /* JS가 style.width를 '8.3%', '16.6%' ... 순서로 변경하면서 진행 상태를 표시 */
-/* transition: width 0.25s — 값이 바뀔 때 부드럽게 늘어나는 애니메이션 */
-/* background: linear-gradient — 핑크→보라→하늘 그라디언트 색상 */
 .progress-fill {
     width: 0%;
     height: 100%;
@@ -114,56 +112,63 @@ main {
 }
 
 /* ── 질문 카드 ──────────────────────────────────────────────── */
-/* 질문 텍스트(#questionTitle)와 선택지 버튼(#optionBox)을 담는 흰색 카드 */
-/* box-shadow: 0 7px 0 — 카드가 아래로 눌린 듯한 입체감 */
 .question-card {
-    border: 2px solid #675e9a;
+    border: 1.5px solid rgba(130, 100, 210, 0.2);
     border-radius: 22px;
     padding: 18px 13px 16px;
-    background: rgba(255, 255, 255, 0.72);
-    box-shadow: 0 7px 0 rgba(94, 84, 145, 0.18);
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 6px 20px rgba(100, 80, 200, 0.09);
 }
 
 #questionTitle {
     height: 30px;
+    font-size: 16px;
+    font-weight: 800;
+    color: #2a2250;
 }
 
 /* ── 선택지 버튼 ────────────────────────────────────────────── */
-/* 사용자가 클릭하는 답변 버튼 — 두 버튼이 세로로 배치됨 */
-/* width: 100% — 카드 전체 너비를 채움 */
-/* min-height: 54px — 텍스트가 2줄이 되어도 높이가 찌그러지지 않음 */
-/* box-shadow: 0 4px 0 — 버튼이 살짝 떠 있는 느낌 */
 .option {
     width: 100%;
     min-height: 54px;
     margin: 9px 0;
     padding: 13px 14px;
-    border: 2px solid #675e9a;
+    border: 1.5px solid rgba(130, 100, 210, 0.25);
     border-radius: 16px;
-    background: linear-gradient(180deg, #fff, #f5f1ff);
-    color: #302b50;
+    background: linear-gradient(180deg, #ffffff, #f8f5ff);
+    color: #2a2250;
     font-size: 15px;
-    font-weight: 850;
+    font-weight: 800;
     line-height: 1.42;
     text-align: left;
     cursor: pointer;
-    box-shadow: 0 4px 0 rgba(97, 87, 150, 0.24);
+    box-shadow: 0 4px 12px rgba(100, 80, 200, 0.08);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    font-family: inherit;
+}
+
+.option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(100, 80, 200, 0.15);
+}
+
+.option:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(100, 80, 200, 0.1);
 }
 
 /* ── 선택지 버튼 그룹 ───────────────────────────────────────── */
 /* margin-top: 148px — 질문 텍스트 아래 빈 공간을 두어 카드 높이를 채움 */
-/* 버튼을 카드 하단에 배치하는 효과 */
 #optionBox {
     margin-top: 148px;
 }
 
-
 /* ── 푸터 ───────────────────────────────────────────────────── */
-/* 저작권·팀원 정보를 표시하는 하단 영역 */
 footer {
-    background-color: #867878;
-    color: white;
+    background: linear-gradient(135deg, #a18cd1 0%, #7b68c8 100%);
+    color: rgba(255, 255, 255, 0.9);
     text-align: center;
-    padding: 10px;
+    padding: 14px;
     margin-top: 20px;
+    font-size: 13px;
 }
