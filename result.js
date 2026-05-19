@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (navigator.share) {
             navigator.share({
                 title: type + ' — 개발자 MBTI 테스트 결과',
-                text: type + ' ' + data.nickname + '\n' + data.desc,
+
                 url: window.location.href
             });
         } else {
